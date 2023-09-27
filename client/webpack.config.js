@@ -18,12 +18,44 @@ module.exports = () => {
       path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
-      
+      new HtmlWebpackPlugin({
+        template: './index.html',
+        title: 'Jate',
+      }),
+
+      new InjectManifest({
+        swSrc: './src-sw.js',
+        swDest: 'src-sw.js',
+      }),
+
+      new WebpackPwaManifest({
+        fingerprints: false,
+        inject: true,
+        name: 'Jate',
+        shotname: 'Jate',
+        description: 'Just another text editor',
+        start_url: './',
+        public_path: './',
+      })
     ],
 
     module: {
       rules: [
-        
+        {
+          test: /\.css$/i, // CSS loader
+          use: ['style-loader', 'css-loader'],
+        },
+        {
+          test: /\.m?js$/, // Babel loader
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env'],
+              plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/plugin-transform-runtime']
+            }
+          }
+        }
       ],
     },
   };
