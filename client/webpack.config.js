@@ -20,7 +20,7 @@ module.exports = () => {
     plugins: [
       new HtmlWebpackPlugin({
         template: './index.html',
-        title: 'Jate',
+        title: 'Just Another Text Editor',
         
       }),
 
@@ -32,8 +32,8 @@ module.exports = () => {
       new WebpackPwaManifest({
         fingerprints: false,
         inject: true,
-        name: 'Jate',
-        short_name: 'Jate',
+        name: 'Just Another Text Editor',
+        short_name: 'J.A.T.E',
         description: 'Just another text editor',
         background_color: '#225ca3',
         theme_color: '#225ca3',
