@@ -40,6 +40,6 @@ const assetCache = new CacheFirst({ // this creates the cache
 })
 // TODO: Implement asset caching
 registerRoute(
-  ({ request }) => ['image', 'style', 'script', 'worker'].includes(request.destination), assetCache 
+  ({ request }) => ['style', 'script', 'worker'].includes(request.destination), assetCache 
 );
 
